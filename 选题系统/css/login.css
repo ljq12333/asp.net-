@@ -1,0 +1,151 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+.container{
+    width: 1000px;
+    height: 700px;
+    margin: 0 auto;
+    /* background-color:red; */
+}
+.container > .center_header{
+    width: 100%;
+    height: 130px;
+    background-color: white;
+    border-bottom: 4px solid rgb(24, 56, 66);
+    margin-bottom: 2px;
+    /* position: absolute; */
+}
+.center_header > .header{
+    height: 20px;
+    background: linear-gradient(rgb(24, 56, 66), white);
+}
+.center_header > .wenzi{
+    width: 100%;
+    height: 100px;
+    float: left;
+}
+.center_header >.wenzi > .logo >img{
+    width: 200px;
+    height: 100px;
+    background-size: cover;
+    float: left;
+    margin-right: 90px;
+}
+.center_header >.wenzi> .font{
+    width: 800px;
+    height: 80px;
+    right: 0px;
+    margin-top: 35px;
+}
+.center_middle{
+    width: 1000px;
+    height: 500px;
+    background-color: white;
+    border-bottom: 4px solid #000000;
+}
+.middle_left{
+    width: 600px;
+    height: 500px;
+    float: left;
+    /* background-color: black; */
+}
+.middle_left > .guize{
+    width: 600px;
+    height: 300px;
+    margin-top: 90px;
+}
+.middle_left > .guize > p{
+    font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+    font-size: 14px;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.middle_left > .guize >p:nth-child(1){
+    text-align: center;
+}
+.middle_right{
+    width: 400px;
+    height: 500px;
+    /* background-color: blue; */
+    float: right;
+}
+.middle_right > .login{
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    border: 1px  solid black;
+    margin-top: 100px;
+    border-top-left-radius: 20%;
+    border-bottom-right-radius: 20%;
+}
+.middle_right > .login >form{
+    display: block;
+    margin: 0 auto;
+    margin-left: 30px;
+    margin-top: 80px;
+}
+label{
+    font-size: 20px;
+}
+.pwd>input{
+    width: 200px;
+    height: 30px;
+}
+.id > input{
+    width: 200px;
+    height: 30px;
+}
+button{
+    cursor: pointer;
+}
+form >div{
+    margin-bottom: 20px;
+}
+form > .code{
+    height: 30px;
+    margin-bottom: 10px;
+}
+form > .radio{
+    margin-bottom: 10px;
+}
+.code > input{
+    width: 50px;
+    height: 20px;
+    display: block;
+    float: left;
+    margin-left: 60px;
+    margin-top: 5px;
+}
+.button{
+    width: 280px;
+    margin: 0 auto;
+}
+.button > input{
+    width: 60px;
+    height: 30px;
+    border-radius: 10%;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    background-color: rgb(37, 93, 165);
+}
+.login >form > .radio{
+    margin-left: 80px;
+}
+.login > form > .button{
+    margin-left: 60px;
+}
+.login > form > .button > input{
+    border: none;
+}
+.container > .center_bottom{
+    text-align: center;
+}
+#canvas {
+    border: 1px solid black;
+}

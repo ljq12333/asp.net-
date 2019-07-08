@@ -1,0 +1,6 @@
+C:\Users\lijianqinag\source\repos\选题系统\MODEL\bin\Debug\MODEL.dll
+C:\Users\lijianqinag\source\repos\选题系统\MODEL\bin\Debug\MODEL.pdb
+C:\Users\lijianqinag\source\repos\选题系统\MODEL\obj\Debug\MODEL.csproj.CoreCompileInputs.cache
+C:\Users\lijianqinag\source\repos\选题系统\MODEL\obj\Debug\MODEL.dll
+C:\Users\lijianqinag\source\repos\选题系统\MODEL\obj\Debug\MODEL.pdb
+C:\Users\lijianqinag\source\repos\选题系统\MODEL\obj\Debug\MODEL.csprojAssemblyReference.cache

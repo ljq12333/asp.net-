@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/colResizable-1.3.min.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        $(".list_table").colResizable({
+          liveDrag:true,
+          gripInnerHtml:"<div class='grip'></div>",
+          draggingClass:"dragging",
+          minWidth:30
+        });
+
+      });
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div id="button" class="mt10">
+            <input type="button" name="button" class="btn btn82 btn_add" value="新增" id="add">          
+        </div>
+
+        <div id="table" class="mt10">
+            <div class="box span10 oh">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="list_table" id="recommend">
+                    <tr>
+                        <th width="30">选择</th>
+                        <th width="200">课题名</th>
+                        <th width="200">指导老师</th>
+                        <th>课题信息</th>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            function check() {
+                $("input[type='checkbox']").bind('click', function () {
+                    if (this.checked) {
+                        $(this).attr("checked", true);
+                        $("input[type='checkbox']").not(this).attr("checked", false);
+                        console.log("hellollll");
+                    } else {
+                        $(this).attr("chekced", false);
+                        console.log("0000");
+                        $("input[type='checkbox']").not(this).attr("checked", false);
+                    }
+                });
+            }
+            console.log("hhhhhhhh");
+            var tbody = $("tbody");
+            $.ajax({
+                url: 'select_all_project.ashx',
+                async: true,
+                type: 'post',
+                success: function (rlt) {
+                    if (rlt.length > 0) {
+                        console.log("hello");
+                        var json_ = JSON.parse(rlt);
+                        for (var i = 0; i < json_.length; i++) {
+                            var tr = $("<tr class=\"tr\"><td class=\"td_center\"><input type=\"checkbox\"></td><td name='project_name'>" + json_[i]['project_name'] + "</td><td name='tea_name'>" + json_[i]['tea_name'] + "</td><td name='project_info'>" + json_[i]['project_info'] + "</td></tr >");
+                            tr.appendTo(tbody);
+                        }
+                        check();
+                    }
+                    else {
+                        console.log("没有数据");
+                    }
+                },
+                error: function () {
+                    alert("失败");
+                    return false;
+                }
+            });
+            
+            $("#add").on("click", function () {
+                var hh = $("table>tbody>tr>td>input[type='checkbox']");
+                var count = 0;
+                var json_ = "[";
+                function all() {
+                    $("table>tbody>tr>td>input[type='checkbox']").map(function (i, val) {
+                        if ($(this).attr("checked") === "checked") {
+                            count++;
+                        }
+                    });
+                };
+                all();
+                var sum = 0;
+                if (count === 0) {
+                    alert("请选择你要添加选题");
+                } else {
+                    var stu_num = $("#user", window.parent.document).text();
+                    $("table>tbody>tr>td>input[type='checkbox']").map(function (i, val) {
+                        if ($(this).attr("checked") === "checked") {
+                            sum++;
+                            json_ += "{\"stu_num\":\"" + stu_num + "\",";
+                            var j = 1;
+                            $(this).parent().siblings().map(function (i, val) {
+                                if (j === 3) {
+                                    json_ += "\"" + $(this).attr("name") + "\":\"" + $(this).text() + "\"";
+                                    j = 1;
+                                } else {
+                                    json_ += "\"" + $(this).attr("name") + "\":\"" + $(this).text() + "\",";
+                                    j++;
+                                }
+                            });
+                            if (sum !== count) {
+                                json_ += "},";
+                            } else {
+                                json_ += "}]";
+                            }
+                        }
+                        console.log(json_);
+                    });
+                    $.ajax({
+                        url: 'insert_.ashx',
+                        data: { "data": json_, "name": stu_num },
+                        async: true,
+                        type: 'post',
+                        success: function (rlt) {
+                            console.log(rlt);
+                            if (rlt === "false") {
+                                alert("你已经选过题目");
+                                return false;
+                            } else if (rlt === "nologin") {
+                                alert("请先登录");
+                                parent.location.reload();
+                            }
+                            else {
+                                alert("选题成功");
+                                return false;
+                            }
+                        },
+                        error: function () {
+                            alert("添加选题失败");
+                            return false;
+                        }
+                    });
+                }
+                console.log(count);
+                console.log(json_);
+            });
+        });
+    </script>
+</body>
+</html>

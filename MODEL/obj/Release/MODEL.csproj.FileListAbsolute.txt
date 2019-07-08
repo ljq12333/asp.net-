@@ -1,0 +1,6 @@
+C:\Users\lijianqinag\source\repos\选题系统\MODEL\bin\Release\MODEL.dll
+C:\Users\lijianqinag\source\repos\选题系统\MODEL\bin\Release\MODEL.pdb
+C:\Users\lijianqinag\source\repos\选题系统\MODEL\obj\Release\MODEL.csprojAssemblyReference.cache
+C:\Users\lijianqinag\source\repos\选题系统\MODEL\obj\Release\MODEL.csproj.CoreCompileInputs.cache
+C:\Users\lijianqinag\source\repos\选题系统\MODEL\obj\Release\MODEL.dll
+C:\Users\lijianqinag\source\repos\选题系统\MODEL\obj\Release\MODEL.pdb

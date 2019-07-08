@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+ <html lang="zh-CN">
+ <head>
+   <meta charset="UTF-8">
+   <link rel="stylesheet" href="css/common.css">
+   <link rel="stylesheet" href="css/main.css">
+   <script type="text/javascript" src="js/jquery.min.js"></script>
+   <script type="text/javascript" src="js/colResizable-1.3.min.js"></script>
+   <script type="text/javascript" src="js/common.js"></script>
+   
+   <script type="text/javascript">
+      $(function(){  
+        $(".list_table").colResizable({
+          liveDrag:true,
+          gripInnerHtml:"<div class='grip'></div>", 
+          draggingClass:"dragging", 
+          minWidth:30
+        }); 
+        
+      }); 
+   </script>
+   <title>Document</title>
+ </head>
+ <body>
+  <div class="container">
+     <div id="button" class="mt10">
+       <input type="button" name="button" class="btn btn82 btn_add" value="新增" id="add"> 
+       <input type="button" name="button" class="btn btn82 btn_checked" value="全选" id="allCheck"> 
+    
+     <div id="table" class="mt10">
+        <div class="box span10 oh">
+              <table width="100%" border="0" cellpadding="0" cellspacing="0" class="list_table" id="recommend">
+                <tr>
+                    <th width="30">选择</th>
+                   <th width="200">课题名</th>
+                   <th width="200">指导老师</th>
+                   <th>课题信息</th>
+                </tr>
+               
+              </table>
+ 
+        </div>
+     </div>
+   </div> 
+     <script>
+         var page_sum = 0;
+         var now_page = 1;
+         var local = window.localStorage;
+         $(function () {
+             $.ajax({
+                 url: './selecAll.ashx',
+                 async: true,
+                 success: function (rlt) {
+                     if (rlt.length > 0) {
+                         var json_ = JSON.parse(rlt);
+                         local = json_;
+                         var tbody = $("#recommend");
+                         var json_len = json_.length;
+                         var tr1 = $('.tr');
+                         tr1.remove();
+                         for (var i = 0; i < json_.length; i++) {
+                             console.log("jjjj");
+                             var tr = $("<tr class=\"tr\"><td class=\"td_center\"><input type=\"checkbox\"></td><td name='project_name'>" + json_[i]['project_name'] + "</td><td name='tea_name'>" + json_[i]['tea_name'] + "</td><td name='project_info'>" + json_[i]['project_info'] + "</td></tr >");
+                             tr.appendTo(tbody);
+                         }
+                         check();
+                     }
+                     else {
+                         console.log("没有数据");
+                     }
+                     //    page_sum = parseInt(json_.length / 15) + 1;
+                     //    console.log(page_sum);
+                     //    if (page_sum <= 5) {
+                     //        console.log("gggg");
+                     //        for (var j = 1; j <= page_sum; j++) {
+                     //            if (j === 1) {
+                     //                var liactive = $("<li><span>" + j + "</span></li>");
+                     //                $("#next").before(liactive);
+                     //            } else {
+                     //                var li = $("<li class=\"active\"><span>" + j + "</span></li>");
+                     //                $("#next").before(li);
+                     //            }
+                     //        }
+                     //    } else {
+                     //        for (var k = 1; k <= 5; k++) {
+                     //            if (j === 1) {
+                     //                var liactive1 = $("<li class=\"active\"><span>" + k + "</span></li>");
+                     //                $("#next").before(liactive1);
+                     //            } else {
+                     //                var li1 = $("<li><span>" + k + "</span></li>");
+                     //                $("#next").before(li1);
+                     //            }
+                     //        }
+                     //    }
+                     //},
+                 },
+                 error: function () {
+                     alert("初始化失败");
+                     return false;
+                 }
+             });
+         });
+         $("#allCheck").on('click', function () {
+             $("table>tbody:first>tr>td>input").attr("checked", true);
+         });
+         $("#cancel").on('click', function () {
+             $("table:first > tbody > tr > td > input").attr("checked", false);
+         });
+         //$("#prev").on('click', function () {
+         //    var tr = $("tbody>tr[class='tr']");
+         //    var tbody = $("#recommend");
+         //    if (now_page === 1) {
+         //        alert("当前已经是第一页");
+         //        return false;
+         //    } else {
+         //        tr.remove();
+         //        var start = (now_page - 2) * 15;
+         //        var last = (now_page - 1) * 15;
+         //        for (var i = start; i < last; i++) {
+         //            var tr1 = $(" < tr class=\"tr\"><td class=\"td_center\"><input type=\"checkbox\"></td><td name=\"project_name\">" + local[j]['project_name'] + "</td><td name=\"teacher\">" + local[j]['project_info'] + "</td><td name=\"project_info\">" + local[j]['teacher'] + "</td></tr >");
+         //            tr1.appendTo(tbody);
+         //        }
+         //        now_page = now_page - 1;
+         //    }
+         //});
+         //$("#next").on('click', function () {
+         //    var tr = $("tbody>tr[class='tr']");
+         //    var tbody = $("#recommend");
+         //    if (now_page === page_sum) {
+         //        alert("当前已经是最后一页");
+         //        return false;
+         //    } else if (now_page === page_sum - 1) {
+         //        tr.remove();
+         //        var start = (now_page) * 15;
+         //        var last = local.length;
+         //        for (var i = start; i < last; i++) {
+         //            var tr1 = $("<tr class=\"tr\"><td class=\"td_center\"><input type=\"checkbox\"></td><td name=\"project_name\">" + local[j]['project_name'] + "</td><td name=\"teacher\">" + local[j]['project_info'] + "</td><td name=\"project_info\">" + local[j]['teacher'] + "</td></tr >");
+         //            tr1.appendTo(tbody);
+         //        }
+         //        now_page = now_page + 1;
+         //    } else {
+         //        tr.remove();
+         //        var start1 = (now_page) * 15;
+         //        var last1 = (now_page + 1) * 15;
+         //        for (var j = start1; j < last1; j++) {
+         //            var tr2 = $("<tr class=\"tr\"><td class=\"td_center\"><input type=\"checkbox\"></td><td name=\"project_name\">" + local[j]['project_name'] + "</td><td name=\"teacher\">" + local[j]['project_info'] + "</td><td name=\"project_info\">" + local[j]['teacher'] + "</td></tr >");
+         //            tr2.appendTo(tbody);
+         //        }
+         //        now_page = now_page + 1;
+         //    }
+         //});
+         function check() {
+             $("input[type='checkbox']").bind('click', function () {
+                 if (this.checked) {
+                     $(this).attr("checked", true);
+                     $("tbody").find("input[type='checkbox']").not(this).attr("checked", false);
+                     console.log("hellollll");
+                 } else {
+                     $(this).attr("chekced", false);
+                     console.log("0000");
+                     $("input[type='checkbox']").not(this).attr("checked", false);
+                 }
+             });
+         }
+         $("#add").on("click", function () {
+             var hh = $("table>tbody>tr>td>input[type='checkbox']");
+             var count = 0;
+             var json_ = "[";
+             function all() {
+                 $("table>tbody>tr>td>input[type='checkbox']").map(function (i, val) {
+                     if ($(this).attr("checked") === "checked") {
+                         count++;
+                     }
+                 });
+             };
+             all();
+             var sum = 0;
+             if (count === 0) {
+                 alert("请选择你要添加选题");
+             } else {
+                 var stu_num = $("#user", window.parent.document).text();
+                 $("table>tbody>tr>td>input[type='checkbox']").map(function (i, val) {
+                     if ($(this).attr("checked") === "checked") {
+                         sum++;
+                         json_ += "{\"stu_num\":\"" + stu_num + "\",";
+                         var j = 1;
+                         $(this).parent().siblings().map(function (i, val) {
+                             if (j === 3) {
+                                 json_ += "\"" + $(this).attr("name") + "\":\"" + $(this).text() + "\"";
+                                 j = 1;
+                             } else {
+                                 json_ += "\"" + $(this).attr("name") + "\":\"" + $(this).text() + "\",";
+                                 j++;
+                             }
+                         });
+                         if (sum !== count) {
+                             json_ += "},";
+                         } else {
+                             json_ += "}]";
+                         }
+                     }
+                     console.log(json_);
+                 });
+                 $.ajax({
+                     url: './insert_.ashx',
+                     data: { "data": json_, "name": stu_num},
+                     async: true,
+                     type: 'post',
+                     success: function (rlt) {
+                         if (rlt === "false") {
+                             alert("你已经选过题目");
+                             return false;
+                         } else if (rlt === "nologin") {
+                             alert("请先登录");
+                             parent.location.reload();
+                         }
+                         else {
+                             alert("选题成功");
+                             return false;
+                         }
+                     },
+                     error: function () {
+                         alert("添加选题失败");
+                         return false;
+                     }
+                 });
+             }
+             console.log(count);
+             console.log(json_);
+         });
+     </script>
+ </body>
+ </html>
+  

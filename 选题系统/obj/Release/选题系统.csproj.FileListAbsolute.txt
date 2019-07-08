@@ -1,0 +1,15 @@
+C:\Users\lijianqinag\source\repos\选题系统\选题系统\bin\选题系统.dll.config
+C:\Users\lijianqinag\source\repos\选题系统\选题系统\bin\选题系统.dll
+C:\Users\lijianqinag\source\repos\选题系统\选题系统\bin\选题系统.pdb
+C:\Users\lijianqinag\source\repos\选题系统\选题系统\bin\BLL.dll
+C:\Users\lijianqinag\source\repos\选题系统\选题系统\bin\DAL.dll
+C:\Users\lijianqinag\source\repos\选题系统\选题系统\bin\MODEL.dll
+C:\Users\lijianqinag\source\repos\选题系统\选题系统\bin\Newtonsoft.Json.dll
+C:\Users\lijianqinag\source\repos\选题系统\选题系统\bin\BLL.pdb
+C:\Users\lijianqinag\source\repos\选题系统\选题系统\bin\DAL.pdb
+C:\Users\lijianqinag\source\repos\选题系统\选题系统\bin\MODEL.pdb
+C:\Users\lijianqinag\source\repos\选题系统\选题系统\obj\Release\选题系统.csprojAssemblyReference.cache
+C:\Users\lijianqinag\source\repos\选题系统\选题系统\obj\Release\选题系统.csproj.CoreCompileInputs.cache
+C:\Users\lijianqinag\source\repos\选题系统\选题系统\obj\Release\选题系统.csproj.CopyComplete
+C:\Users\lijianqinag\source\repos\选题系统\选题系统\obj\Release\选题系统.dll
+C:\Users\lijianqinag\source\repos\选题系统\选题系统\obj\Release\选题系统.pdb

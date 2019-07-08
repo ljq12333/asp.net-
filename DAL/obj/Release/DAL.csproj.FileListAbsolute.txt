@@ -1,0 +1,9 @@
+C:\Users\lijianqinag\source\repos\选题系统\DAL\bin\Release\DAL.dll
+C:\Users\lijianqinag\source\repos\选题系统\DAL\bin\Release\DAL.pdb
+C:\Users\lijianqinag\source\repos\选题系统\DAL\bin\Release\MODEL.dll
+C:\Users\lijianqinag\source\repos\选题系统\DAL\bin\Release\MODEL.pdb
+C:\Users\lijianqinag\source\repos\选题系统\DAL\obj\Release\DAL.csprojAssemblyReference.cache
+C:\Users\lijianqinag\source\repos\选题系统\DAL\obj\Release\DAL.csproj.CoreCompileInputs.cache
+C:\Users\lijianqinag\source\repos\选题系统\DAL\obj\Release\DAL.csproj.CopyComplete
+C:\Users\lijianqinag\source\repos\选题系统\DAL\obj\Release\DAL.dll
+C:\Users\lijianqinag\source\repos\选题系统\DAL\obj\Release\DAL.pdb

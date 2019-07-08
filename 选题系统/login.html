@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/adminlogin.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+	<title>后台登陆</title>
+</head>
+<body>
+	<div id="login_top">
+		<div id="welcome">
+			欢迎使用进入选题系统后台管理
+		</div>
+		<div id="back">
+			<a href="Alllogin.aspx">返回首页</a>&nbsp;&nbsp; | &nbsp;&nbsp;
+			<a href="#">帮助</a>
+		</div>
+	</div>
+	<div id="login_center">
+		<div id="login_area">
+			<div id="login_form">
+				<form method="post">
+					<div id="login_tip">
+						用户登录&nbsp;&nbsp;UserLogin
+					</div>
+					<div><input type="text" class="username"></div>
+					<div><input type="text" class="pwd"></div>
+					<div id="btn_area">
+						<input type="button" name="submit" class="sub_btn" value="登&nbsp;&nbsp;录" id="login_btn">&nbsp;&nbsp;
+                        <input type="reset" name="" class="sub_btn" value="取&nbsp;&nbsp;消" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="login_bottom">
+		版权所有
+	</div>
+    <script>
+        $("#login_btn").on("click", function () {
+            if ($(".username").val() === "" | $(".pwd").val() === "") {
+                alert("请输入账号密码");
+                return false;
+            } else {
+                $.ajax({
+                    url: 'admin_login.ashx',
+                    async: true,
+                    data: { "username": $(".username").val(), "pwd": $(".pwd").val() },
+                    success: function (rlt) {
+                        if (rlt === "true") {
+                            window.location.href = "adminManage.aspx";
+                        }
+                        else {
+                            alert("请输入正确的密码和账号");
+                            return false;
+                        }
+                    },
+                    error: function () {
+                        alert("登陆失败");
+                        return false;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
